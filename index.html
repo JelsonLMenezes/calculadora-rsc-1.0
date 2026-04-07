@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora RSC-PCCTAE - IFPE campus Olinda</title>
+    <title>Calculadora RSC-PCCTAE - Ferramenta Não Oficial</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <style>
-        body { 
-            background-color: #f4f4f4; 
+        body {
+            background-color: #f4f4f4;
             font-family: 'Montserrat', sans-serif;
             font-size: 0.95rem;
             color: #333;
@@ -18,16 +20,37 @@
             flex-direction: column;
             min-height: 100vh;
         }
-        
+
         main {
             flex: 1;
         }
-        
-        .pad-lateral { padding-left: 1rem; padding-right: 1rem; }
-        @media (min-width: 768px) { .pad-lateral { padding-left: 3rem; padding-right: 3rem; } }
-        @media (min-width: 1200px) { .pad-lateral { padding-left: 6vw; padding-right: 6vw; } }
-        @media (min-width: 1600px) { .pad-lateral { padding-left: 10vw; padding-right: 10vw; } }
-        
+
+        .pad-lateral {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .pad-lateral {
+                padding-left: 3rem;
+                padding-right: 3rem;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .pad-lateral {
+                padding-left: 6vw;
+                padding-right: 6vw;
+            }
+        }
+
+        @media (min-width: 1600px) {
+            .pad-lateral {
+                padding-left: 10vw;
+                padding-right: 10vw;
+            }
+        }
+
         :root {
             --verde-if: #1E7A2D;
             --verde-hover: #155d21;
@@ -35,8 +58,13 @@
             --cinza-input: #495057;
         }
 
-        .text-ifpe-green { color: var(--verde-if) !important; }
-        .text-ifpe-red { color: var(--vermelho-if) !important; }
+        .text-ifpe-green {
+            color: var(--verde-if) !important;
+        }
+
+        .text-ifpe-red {
+            color: var(--vermelho-if) !important;
+        }
 
         .ifpe-topbar {
             background-color: #F8F9FA;
@@ -45,60 +73,180 @@
             padding: 5px 0;
             border-bottom: 1px solid #ddd;
         }
+
         .ifpe-header {
             background-color: var(--verde-if);
             color: white;
             padding: 2rem 0;
         }
+
         .ifpe-card-header {
             background-color: #4f4f4f;
             border-bottom: 1px solid #dee2e6;
-            color: #fff; 
+            color: #fff;
             font-weight: 600;
         }
+
         .ifpe-alert {
             background-color: #FFF3CD;
             border-left: 5px solid #FFC107;
             color: #664D03;
         }
-        
-        .sticky-summary { position: sticky; top: 20px; z-index: 1000; }
-        
-        .input-qty { width: 60px; text-align: center; font-weight: bold; border: 1px solid #ced4da; color: var(--cinza-input); }
-        .input-qty:focus { box-shadow: 0 0 0 0.25rem rgba(30, 122, 45, 0.15); border-color: var(--verde-if); }
-        .btn-minus { border-color: #dc3545; color: #dc3545; background: #fff;}
-        .btn-minus:hover { background: #dc3545; color: #fff; }
-        .btn-plus { border-color: var(--verde-if); color: var(--verde-if); background: #fff;}
-        .btn-plus:hover { background: var(--verde-hover); border-color: var(--verde-hover); color: #fff; }
-        
-        .pts-column { color: var(--cinza-input); }
 
-        input[type=number]::-webkit-inner-spin-button, 
-        input[type=number]::-webkit-outer-spin-button { 
-            -webkit-appearance: none; 
-            margin: 0; 
+        .sticky-summary {
+            position: sticky;
+            top: 20px;
+            z-index: 1000;
         }
-        input[type=number] { -moz-appearance: textfield; }
-        
-        .row-total { font-weight: bold; color: var(--verde-if); font-size: 1.1rem; }
-        .unidade-badge { background-color: #E9ECEF; color: #495057; font-size: 0.75rem; padding: 4px 8px; border-radius: 12px; display: inline-block; white-space: nowrap;}
-        .obs-text { font-size: 0.8rem; color: var(--vermelho-if); display: block; margin-top: 4px; font-weight: 500;}
-        .table-responsive { overflow-x: auto; }
-        
-        .iq-badge { background-color: #e9ecef; border: 1px solid #ced4da; padding: 2px 6px; border-radius: 4px; font-size: 0.8rem; color: #495057; font-weight: 500; margin-left: 8px;}
-        
-        .search-container { position: relative; }
-        .search-icon { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #6c757d; }
-        .clear-icon { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #a0aec0; cursor: pointer; transition: 0.2s;}
-        .clear-icon:hover { color: var(--vermelho-if); }
-        .search-input { padding-left: 45px; padding-right: 40px; border: 1px solid #ced4da; border-radius: 8px; font-weight: 500; color: var(--cinza-input);}
-        .search-input:focus { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); border-color: var(--verde-if);}
-        .search-input::placeholder { color: #a0aec0; font-weight: 400;}
 
-        .progress-table th, .progress-table td { border-bottom: 1px solid #f1f3f5; }
-        .progress-table tr:last-child td { border-bottom: none; }
-        .bg-achieved { background-color: #f6fdf7; transition: 0.3s; }
-        
+        .input-qty {
+            width: 60px;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid #ced4da;
+            color: var(--cinza-input);
+        }
+
+        .input-qty:focus {
+            box-shadow: 0 0 0 0.25rem rgba(30, 122, 45, 0.15);
+            border-color: var(--verde-if);
+        }
+
+        .btn-minus {
+            border-color: #dc3545;
+            color: #dc3545;
+            background: #fff;
+        }
+
+        .btn-minus:hover {
+            background: #dc3545;
+            color: #fff;
+        }
+
+        .btn-plus {
+            border-color: var(--verde-if);
+            color: var(--verde-if);
+            background: #fff;
+        }
+
+        .btn-plus:hover {
+            background: var(--verde-hover);
+            border-color: var(--verde-hover);
+            color: #fff;
+        }
+
+        .pts-column {
+            color: var(--cinza-input);
+        }
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        .row-total {
+            font-weight: bold;
+            color: var(--verde-if);
+            font-size: 1.1rem;
+        }
+
+        .unidade-badge {
+            background-color: #E9ECEF;
+            color: #495057;
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 12px;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .obs-text {
+            font-size: 0.8rem;
+            color: var(--vermelho-if);
+            display: block;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .iq-badge {
+            background-color: #e9ecef;
+            border: 1px solid #ced4da;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: #495057;
+            font-weight: 500;
+            margin-left: 8px;
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+
+        .clear-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #a0aec0;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .clear-icon:hover {
+            color: var(--vermelho-if);
+        }
+
+        .search-input {
+            padding-left: 45px;
+            padding-right: 40px;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            font-weight: 500;
+            color: var(--cinza-input);
+        }
+
+        .search-input:focus {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-color: var(--verde-if);
+        }
+
+        .search-input::placeholder {
+            color: #a0aec0;
+            font-weight: 400;
+        }
+
+        .progress-table th,
+        .progress-table td {
+            border-bottom: 1px solid #f1f3f5;
+        }
+
+        .progress-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .bg-achieved {
+            background-color: #f6fdf7;
+            transition: 0.3s;
+        }
+
         .ifpe-footer {
             background-color: #212529;
             color: #adb5bd;
@@ -106,57 +254,63 @@
             margin-top: 3rem;
             font-size: 0.85rem;
         }
+
         .ifpe-footer a {
             color: #e9ecef;
             text-decoration: none;
             transition: 0.2s;
         }
+
         .ifpe-footer a:hover {
             color: var(--verde-if);
             text-decoration: underline;
         }
+
         .footer-logo i {
             font-size: 2rem;
             color: var(--verde-if);
         }
+
         .footer-social a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             width: 32px;
             height: 32px;
-            background-color: rgba(255,255,255,0.1);
+            background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             transition: 0.2s;
             margin: 0 4px;
         }
+
         .footer-social a:hover {
             background-color: var(--verde-if);
             color: white;
             transform: translateY(-2px);
         }
+
         .footer-divider {
-            border-color: rgba(255,255,255,0.1);
+            border-color: rgba(255, 255, 255, 0.1);
             margin: 1.5rem 0 1rem;
         }
-        
+
         .btn-ifpe {
             background-color: var(--verde-if);
             color: white;
             transition: 0.2s;
         }
+
         .btn-ifpe:hover {
             background-color: var(--verde-hover);
             color: white;
         }
     </style>
 </head>
+
 <body>
 
     <div class="ifpe-topbar">
-        <div class="container-fluid pad-lateral d-flex justify-content-between align-items-center">
-            <span class="fw-bold text-secondary">Instituto Federal de Pernambuco - campus Olinda</span>
-            <span class="text-secondary small fw-medium">Coordenação de Tecnologia da Informação e Comunicação</span>
+        <div class="container-fluid pad-lateral d-flex pt-3 justify-content-between align-items-center">
         </div>
     </div>
 
@@ -164,8 +318,7 @@
         <div class="container-fluid pad-lateral">
             <div class="row align-items-center">
                 <div class="col-md-8">
-                    <h1 class="fw-bold mb-1">Simulador RSC-PCCTAE</h1>
-                    <p class="mb-0 fs-5">IFPE campus Olinda</p>
+                    <h1 class="fw-bold py-2">Simulador RSC-PCCTAE</h1>
                 </div>
                 <div class="col-md-4 text-md-end mt-3 mt-md-0">
                     <i class="fa-solid fa-calculator fa-3x opacity-75"></i>
@@ -176,15 +329,23 @@
 
     <main>
         <div class="container-fluid pad-lateral pb-5">
-            
+
             <div class="alert ifpe-alert shadow-sm mb-4" role="alert">
-                <h5 class="alert-heading fw-bold mb-2"><i class="fa-solid fa-circle-exclamation"></i> Regras Importantes</h5>
+                <h5 class="alert-heading fw-bold mb-2"><i class="fa-solid fa-circle-exclamation"></i> Regras Importantes
+                </h5>
                 <ul class="mb-0 small">
-                    <li class="mb-1">O RSC equivale financeiramente aos percentuais do <strong>Incentivo à Qualificação (IQ)</strong>, mas é obtido através das suas <strong>experiências e atividades</strong>, e não por diplomas.</li>
-                    <li class="mb-1"><strong>Exigências de Áreas:</strong> Para atingir os níveis mais altos (IV, V ou VI), além da pontuação mínima, é obrigatório possuir atividades realizadas em Áreas/Requisitos específicos, conforme detalhado no Mapa de Exigências.</li>
-                    <li class="mb-1">Atividades que fazem parte das <strong>atribuições ordinárias (rotina)</strong> do seu cargo não podem ser computadas.</li>
-                    <li class="mb-1">Cada atividade/fato só pode ser utilizada <strong>uma única vez</strong>, sendo vedada a duplicidade entre itens.</li>
-                    <li>A pontuação reconhecida é <strong>cumulativa</strong>, ou seja, o saldo de pontos não aproveitados para a concessão atual será utilizado em concessões futuras.</li>
+                    <li class="mb-1">O RSC equivale financeiramente aos percentuais do <strong>Incentivo à Qualificação
+                            (IQ)</strong>, mas é obtido através das suas <strong>experiências e atividades</strong>, e
+                        não por diplomas.</li>
+                    <li class="mb-1"><strong>Exigências de Áreas:</strong> Para atingir os níveis mais altos (IV, V ou
+                        VI), além da pontuação mínima, é obrigatório possuir atividades realizadas em Áreas/Requisitos
+                        específicos, conforme detalhado no Mapa de Exigências.</li>
+                    <li class="mb-1">Atividades que fazem parte das <strong>atribuições ordinárias (rotina)</strong> do
+                        seu cargo não podem ser computadas.</li>
+                    <li class="mb-1">Cada atividade/fato só pode ser utilizada <strong>uma única vez</strong>, sendo
+                        vedada a duplicidade entre itens.</li>
+                    <li>A pontuação reconhecida é <strong>cumulativa</strong>, ou seja, o saldo de pontos não
+                        aproveitados para a concessão atual será utilizado em concessões futuras.</li>
                 </ul>
             </div>
 
@@ -197,7 +358,8 @@
                         <table class="table table-hover mb-0 text-center align-middle border-bottom">
                             <thead class="table-light small text-secondary">
                                 <tr>
-                                    <th class="text-start ps-4">Nível RSC <span class="fw-normal opacity-75">(Equivalência no IQ)</span></th>
+                                    <th class="text-start ps-4">Nível RSC <span
+                                            class="fw-normal opacity-75">(Equivalência no IQ)</span></th>
                                     <th>Pontuação Mínima</th>
                                     <th>Atividades Diferentes (Critérios)</th>
                                     <th class="text-start">Exigências de Áreas (Requisitos)</th>
@@ -205,40 +367,49 @@
                             </thead>
                             <tbody class="small text-muted">
                                 <tr>
-                                    <td class="text-start ps-4 fw-bold text-dark">RSC I <span class="iq-badge bg-white">IQ 10% / Ens. Fundamental</span></td>
+                                    <td class="text-start ps-4 fw-bold text-dark">RSC I <span
+                                            class="iq-badge bg-white">IQ 10% / Ens. Fundamental</span></td>
                                     <td>10 pontos</td>
                                     <td>1 atividade mínima</td>
                                     <td class="text-start">Livre (Qualquer área/requisito).</td>
                                 </tr>
                                 <tr>
-                                    <td class="text-start ps-4 fw-bold text-dark">RSC II <span class="iq-badge bg-white">IQ 20% / Curso Técnico</span></td>
+                                    <td class="text-start ps-4 fw-bold text-dark">RSC II <span
+                                            class="iq-badge bg-white">IQ 20% / Curso Técnico</span></td>
                                     <td>20 pontos</td>
                                     <td>2 atividades mínimas</td>
                                     <td class="text-start">Livre (Qualquer área/requisito).</td>
                                 </tr>
                                 <tr>
-                                    <td class="text-start ps-4 fw-bold text-dark">RSC III <span class="iq-badge bg-white">IQ 25% / Graduação</span></td>
+                                    <td class="text-start ps-4 fw-bold text-dark">RSC III <span
+                                            class="iq-badge bg-white">IQ 25% / Graduação</span></td>
                                     <td>25 pontos</td>
                                     <td>2 atividades mínimas</td>
                                     <td class="text-start">Livre (Qualquer área/requisito).</td>
                                 </tr>
                                 <tr>
-                                    <td class="text-start ps-4 fw-bold text-dark">RSC IV <span class="iq-badge">IQ 30% / Especialização</span></td>
+                                    <td class="text-start ps-4 fw-bold text-dark">RSC IV <span class="iq-badge">IQ 30% /
+                                            Especialização</span></td>
                                     <td>30 pontos</td>
                                     <td>3 atividades mínimas</td>
-                                    <td class="text-start fw-semibold text-dark">Pontuar em atividades das Áreas (Requisitos) II, IV, V ou VI.</td>
+                                    <td class="text-start fw-semibold text-dark">Pontuar em atividades das Áreas
+                                        (Requisitos) II, IV, V ou VI.</td>
                                 </tr>
                                 <tr>
-                                    <td class="text-start ps-4 fw-bold text-dark">RSC V <span class="iq-badge">IQ 52% / Mestrado</span></td>
+                                    <td class="text-start ps-4 fw-bold text-dark">RSC V <span class="iq-badge">IQ 52% /
+                                            Mestrado</span></td>
                                     <td>52 pontos</td>
                                     <td>5 atividades mínimas</td>
-                                    <td class="text-start fw-semibold text-dark">Pontuar em atividades das Áreas (Requisitos) IV, V ou VI.</td>
+                                    <td class="text-start fw-semibold text-dark">Pontuar em atividades das Áreas
+                                        (Requisitos) IV, V ou VI.</td>
                                 </tr>
                                 <tr>
-                                    <td class="text-start ps-4 fw-bold text-dark">RSC VI <span class="iq-badgess">IQ 75% / Doutorado</span></td>
+                                    <td class="text-start ps-4 fw-bold text-dark">RSC VI <span class="iq-badge">IQ 75%
+                                            / Doutorado</span></td>
                                     <td>75 pontos</td>
                                     <td>7 atividades mínimas</td>
-                                    <td class="text-start fw-bold text-dark">Pontuar obrigatoriamente na Área (Requisito) VI.</td>
+                                    <td class="text-start fw-bold text-dark">Pontuar obrigatoriamente na Área
+                                        (Requisito) VI.</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -246,8 +417,9 @@
                 </div>
             </div>
 
-            <h5 class="fw-bold text-dark mb-3 mt-4"><i class="fa-solid fa-list-check text-muted"></i> Lançamento de Atividades e Experiências</h5>
-            
+            <h5 class="fw-bold text-dark mb-3 mt-4"><i class="fa-solid fa-list-check text-muted"></i> Lançamento de
+                Atividades e Experiências</h5>
+
             <div class="row g-4">
                 <div class="col-lg-8">
                     <div id="containerCriterios"></div>
@@ -260,104 +432,142 @@
 
                 <div class="col-lg-4">
                     <div class="sticky-summary">
-                        
+
                         <div class="search-container mb-3">
                             <i class="fa-solid fa-search search-icon"></i>
-                            <input type="text" id="inputBusca" class="form-control search-input bg-white py-2 shadow-sm" placeholder="Buscar atividade ou palavra-chave...">
+                            <input type="text" id="inputBusca" class="form-control search-input bg-white py-2 shadow-sm"
+                                placeholder="Buscar atividade ou palavra-chave...">
                             <i class="fa-solid fa-xmark clear-icon d-none" id="clearBusca" title="Limpar busca"></i>
                         </div>
 
                         <div class="card shadow-sm border-0">
                             <div class="card-header bg-white border-bottom py-3">
-                                <h5 class="mb-0 text-center fw-bold text-dark"><i class="fa-solid fa-chart-line text-muted"></i> Resultado</h5>
+                                <h5 class="mb-0 text-center fw-bold text-dark"><i
+                                        class="fa-solid fa-chart-line text-muted"></i> Resultado</h5>
                             </div>
                             <div class="card-body bg-white text-center pb-2">
                                 <p class="text-muted small mb-1 text-uppercase fw-bold">Nível RSC Atingido</p>
-                                <h3 id="nivelProjetado" class="fw-bold mb-0 mt-1" style="color: var(--verde-if);">Aguardando...</h3>
+                                <h3 id="nivelProjetado" class="fw-bold mb-0 mt-1" style="color: var(--verde-if);">
+                                    Aguardando...</h3>
                                 <p id="iqEquivalente" class="text-secondary small fw-semibold mt-1 mb-4"></p>
-                                
+
                                 <div class="p-3 border rounded bg-light mb-0">
                                     <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
                                         <span class="fw-bold text-dark">Pontuação Total:</span>
-                                        <span id="totalPontos" class="fw-bold fs-4" style="color: var(--verde-if);">0.0</span>
+                                        <span id="totalPontos" class="fw-bold fs-4"
+                                            style="color: var(--verde-if);">0.0</span>
                                     </div>
                                     <div class="d-flex justify-content-between">
-                                        <span class="fw-bold text-dark text-start">Atividades Diferentes <br><small class="text-muted fw-normal">(Qtd. de Critérios):</small></span>
-                                        <span id="totalCriterios" class="fw-bold fs-5 text-dark align-self-center">0</span>
+                                        <span class="fw-bold text-dark text-start">Atividades Diferentes <br><small
+                                                class="text-muted fw-normal">(Qtd. de Critérios):</small></span>
+                                        <span id="totalCriterios"
+                                            class="fw-bold fs-5 text-dark align-self-center">0</span>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="card-body bg-white pt-2 border-top">
-                                <h6 class="fw-bold text-dark text-start mb-3" style="font-size: 0.9rem;">Progresso por Nível:</h6>
+                                <h6 class="fw-bold text-dark text-start mb-3" style="font-size: 0.9rem;">Progresso por
+                                    Nível:</h6>
                                 <div class="table-responsive">
-                                    <table class="table table-sm progress-table align-middle small mb-0" style="font-size: 0.8rem;">
-                                        <thead class="text-muted" style="font-size: 0.65rem; text-transform: uppercase;">
+                                    <table class="table table-sm progress-table align-middle small mb-0"
+                                        style="font-size: 0.8rem;">
+                                        <thead class="text-muted"
+                                            style="font-size: 0.65rem; text-transform: uppercase;">
                                             <tr>
                                                 <th class="ps-2">Nível</th>
                                                 <th class="text-center">Pontos</th>
                                                 <th class="text-center">Ativ.</th>
-                                                <th class="text-center" title="Exigência de Área Opcional/Obrigatória">Área</th>
+                                                <th class="text-center" title="Exigência de Área Opcional/Obrigatória">
+                                                    Área</th>
                                                 <th class="text-center pe-2">Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr id="prog_row_1">
                                                 <td class="fw-bold text-dark ps-2">RSC I</td>
-                                                <td class="text-center" id="prog_pts_1"><span class="text-muted">0.0</span> / 10</td>
-                                                <td class="text-center" id="prog_ativ_1"><span class="text-muted">0</span> / 1</td>
+                                                <td class="text-center" id="prog_pts_1"><span
+                                                        class="text-muted">0.0</span> / 10</td>
+                                                <td class="text-center" id="prog_ativ_1"><span
+                                                        class="text-muted">0</span> / 1</td>
                                                 <td class="text-center text-muted">-</td>
-                                                <td class="text-center pe-2" id="prog_status_1"><i class="fa-solid fa-lock text-muted opacity-25"></i></td>
+                                                <td class="text-center pe-2" id="prog_status_1"><i
+                                                        class="fa-solid fa-lock text-muted opacity-25"></i></td>
                                             </tr>
                                             <tr id="prog_row_2">
                                                 <td class="fw-bold text-dark ps-2">RSC II</td>
-                                                <td class="text-center" id="prog_pts_2"><span class="text-muted">0.0</span> / 20</td>
-                                                <td class="text-center" id="prog_ativ_2"><span class="text-muted">0</span> / 2</td>
+                                                <td class="text-center" id="prog_pts_2"><span
+                                                        class="text-muted">0.0</span> / 20</td>
+                                                <td class="text-center" id="prog_ativ_2"><span
+                                                        class="text-muted">0</span> / 2</td>
                                                 <td class="text-center text-muted">-</td>
-                                                <td class="text-center pe-2" id="prog_status_2"><i class="fa-solid fa-lock text-muted opacity-25"></i></td>
+                                                <td class="text-center pe-2" id="prog_status_2"><i
+                                                        class="fa-solid fa-lock text-muted opacity-25"></i></td>
                                             </tr>
                                             <tr id="prog_row_3">
                                                 <td class="fw-bold text-dark ps-2">RSC III</td>
-                                                <td class="text-center" id="prog_pts_3"><span class="text-muted">0.0</span> / 25</td>
-                                                <td class="text-center" id="prog_ativ_3"><span class="text-muted">0</span> / 2</td>
+                                                <td class="text-center" id="prog_pts_3"><span
+                                                        class="text-muted">0.0</span> / 25</td>
+                                                <td class="text-center" id="prog_ativ_3"><span
+                                                        class="text-muted">0</span> / 2</td>
                                                 <td class="text-center text-muted">-</td>
-                                                <td class="text-center pe-2" id="prog_status_3"><i class="fa-solid fa-lock text-muted opacity-25"></i></td>
+                                                <td class="text-center pe-2" id="prog_status_3"><i
+                                                        class="fa-solid fa-lock text-muted opacity-25"></i></td>
                                             </tr>
                                             <tr id="prog_row_4">
                                                 <td class="fw-bold text-dark ps-2">RSC IV</td>
-                                                <td class="text-center" id="prog_pts_4"><span class="text-muted">0.0</span> / 30</td>
-                                                <td class="text-center" id="prog_ativ_4"><span class="text-muted">0</span> / 3</td>
-                                                <td class="text-center" id="prog_area_4" title="Exige Área II, IV, V ou VI"><i class="fa-solid fa-xmark text-danger opacity-50"></i></td>
-                                                <td class="text-center pe-2" id="prog_status_4"><i class="fa-solid fa-lock text-muted opacity-25"></i></td>
+                                                <td class="text-center" id="prog_pts_4"><span
+                                                        class="text-muted">0.0</span> / 30</td>
+                                                <td class="text-center" id="prog_ativ_4"><span
+                                                        class="text-muted">0</span> / 3</td>
+                                                <td class="text-center" id="prog_area_4"
+                                                    title="Exige Área II, IV, V ou VI"><i
+                                                        class="fa-solid fa-xmark text-danger opacity-50"></i></td>
+                                                <td class="text-center pe-2" id="prog_status_4"><i
+                                                        class="fa-solid fa-lock text-muted opacity-25"></i></td>
                                             </tr>
                                             <tr id="prog_row_5">
                                                 <td class="fw-bold text-dark ps-2">RSC V</td>
-                                                <td class="text-center" id="prog_pts_5"><span class="text-muted">0.0</span> / 52</td>
-                                                <td class="text-center" id="prog_ativ_5"><span class="text-muted">0</span> / 5</td>
-                                                <td class="text-center" id="prog_area_5" title="Exige Área IV, V ou VI"><i class="fa-solid fa-xmark text-danger opacity-50"></i></td>
-                                                <td class="text-center pe-2" id="prog_status_5"><i class="fa-solid fa-lock text-muted opacity-25"></i></td>
+                                                <td class="text-center" id="prog_pts_5"><span
+                                                        class="text-muted">0.0</span> / 52</td>
+                                                <td class="text-center" id="prog_ativ_5"><span
+                                                        class="text-muted">0</span> / 5</td>
+                                                <td class="text-center" id="prog_area_5" title="Exige Área IV, V ou VI">
+                                                    <i class="fa-solid fa-xmark text-danger opacity-50"></i>
+                                                </td>
+                                                <td class="text-center pe-2" id="prog_status_5"><i
+                                                        class="fa-solid fa-lock text-muted opacity-25"></i></td>
                                             </tr>
                                             <tr id="prog_row_6">
                                                 <td class="fw-bold text-dark ps-2">RSC VI</td>
-                                                <td class="text-center" id="prog_pts_6"><span class="text-muted">0.0</span> / 75</td>
-                                                <td class="text-center" id="prog_ativ_6"><span class="text-muted">0</span> / 7</td>
-                                                <td class="text-center" id="prog_area_6" title="Exige obrigatoriamente Área VI"><i class="fa-solid fa-xmark text-danger opacity-50"></i></td>
-                                                <td class="text-center pe-2" id="prog_status_6"><i class="fa-solid fa-lock text-muted opacity-25"></i></td>
+                                                <td class="text-center" id="prog_pts_6"><span
+                                                        class="text-muted">0.0</span> / 75</td>
+                                                <td class="text-center" id="prog_ativ_6"><span
+                                                        class="text-muted">0</span> / 7</td>
+                                                <td class="text-center" id="prog_area_6"
+                                                    title="Exige obrigatoriamente Área VI"><i
+                                                        class="fa-solid fa-xmark text-danger opacity-50"></i></td>
+                                                <td class="text-center pe-2" id="prog_status_6"><i
+                                                        class="fa-solid fa-lock text-muted opacity-25"></i></td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
-                                
+
                                 <div class="mt-2 text-start" style="font-size: 0.65rem;">
-                                    <span class="d-block text-muted"><strong class="text-dark">Trava RSC IV:</strong> Deve pontuar pelo menos na área de atuação(requisito) II, IV, V ou VI</span>
-                                    <span class="d-block text-muted"><strong class="text-dark">Trava RSC V:</strong> Deve pontuar pelo menos na área de atuação(requisito)  IV, V ou VI</span>
-                                    <span class="d-block text-muted"><strong class="text-dark">Trava RSC VI:</strong> Deve pontuar na área de atuação(requisito)  VI obrigatoriamente</span>
+                                    <span class="d-block text-muted"><strong class="text-dark">Trava RSC IV:</strong>
+                                        Deve pontuar pelo menos na área de atuação(requisito) II, IV, V ou VI</span>
+                                    <span class="d-block text-muted"><strong class="text-dark">Trava RSC V:</strong>
+                                        Deve pontuar pelo menos na área de atuação(requisito) IV, V ou VI</span>
+                                    <span class="d-block text-muted"><strong class="text-dark">Trava RSC VI:</strong>
+                                        Deve pontuar na área de atuação(requisito) VI obrigatoriamente</span>
                                 </div>
                             </div>
-                            
-                            <!-- Botão Anexar removido conforme solicitado -->
+
                             <div class="card-body bg-white border-top p-3 d-flex gap-2 justify-content-center">
-                                <button type="button" class="btn btn-outline-danger btn-sm flex-fill fw-semibold shadow-sm" data-bs-toggle="modal" data-bs-target="#modalLimparDados">
+                                <button type="button"
+                                    class="btn btn-outline-danger btn-sm flex-fill fw-semibold shadow-sm"
+                                    data-bs-toggle="modal" data-bs-target="#modalLimparDados">
                                     <i class="fa-solid fa-trash-can me-1"></i> Limpar
                                 </button>
                             </div>
@@ -367,7 +577,8 @@
                 </div>
             </div>
 
-            <div class="modal fade" id="modalLimparDados" tabindex="-1" aria-labelledby="modalLimparDadosLabel" aria-hidden="true">
+            <div class="modal fade" id="modalLimparDados" tabindex="-1" aria-labelledby="modalLimparDadosLabel"
+                aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content border-0 shadow">
                         <div class="modal-header border-bottom-0 pb-0 justify-content-end">
@@ -375,61 +586,57 @@
                         </div>
                         <div class="modal-body text-center pt-0 pb-4 px-4">
                             <div class="mb-3">
-                                <i class="fa-solid fa-triangle-exclamation fa-3x" style="color: var(--vermelho-if);"></i>
+                                <i class="fa-solid fa-triangle-exclamation fa-3x"
+                                    style="color: var(--vermelho-if);"></i>
                             </div>
                             <h4 class="fw-bold mb-3">Limpar Simulação?</h4>
-                            <p class="text-muted mb-0">Tem certeza que deseja zerar todas as quantidades informadas? <strong>Esta ação não poderá ser desfeita.</strong></p>
+                            <p class="text-muted mb-0">Tem certeza que deseja zerar todas as quantidades informadas?
+                                <strong>Esta ação não poderá ser desfeita.</strong>
+                            </p>
                         </div>
                         <div class="modal-footer bg-light border-top-0 d-flex justify-content-center gap-2 py-3">
-                            <button type="button" class="btn btn-secondary btn-sm px-4 fw-semibold shadow-sm" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-danger btn-sm px-4 fw-semibold shadow-sm" id="btnConfirmarLimpar">Sim, limpar tudo</button>
+                            <button type="button" class="btn btn-secondary btn-sm px-4 fw-semibold shadow-sm"
+                                data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-danger btn-sm px-4 fw-semibold shadow-sm"
+                                id="btnConfirmarLimpar">Sim, limpar tudo</button>
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
     </main>
 
     <footer class="ifpe-footer">
         <div class="container-fluid pad-lateral">
             <div class="row g-4">
-                <div class="col-md-4 text-center text-md-start">
+                <div class="col-md-12 text-center">
                     <div class="footer-logo mb-2">
-                        <i class="fa-solid fa-landmark"></i>
+                        <i class="fa-solid fa-scale-balanced"></i>
                     </div>
-                    <h5 class="text-white mb-2 fs-6 fw-bold">IFPE Campus Olinda</h5>
-                    <p class="mb-1 small">Av. Fagundes Varela, 375 - Jardim Atlântico, Olinda - PE<br>CEP: 53140-080</p>
-                </div>
-                <div class="col-md-4 text-center">
-                    <h5 class="text-white mb-3 fs-6 fw-bold">Links Institucionais</h5>
-                    <ul class="list-unstyled small mb-0">
-                        <li class="mb-2"><a href="https://in.gov.br/en/web/dou/-/lei-n-15.367-de-30-de-marco-de-2026-696676817" target="_blank"><i class="fa-regular fa-file-lines me-1"></i> LEI Nº 15.367, DE 30 DE MARÇO DE 2026</a></li>
-                        <li class="mb-2"><a href="https://portal.ifpe.edu.br/olinda/" target="_blank"><i class="fa-regular fa-building me-1"></i> IFPE Olinda</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 text-center text-md-end">
-                    <h5 class="text-white mb-3 fs-6 fw-bold">Acompanhe</h5>
-                    <div class="footer-social mb-3">
-                        <a href="https://www.instagram.com/ifpeolinda/" class="text-white" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/ifpeolinda" class="text-white" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="https://www.youtube.com/@IFPEOlinda" class="text-white" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                    </div>
+                    <p class="mb-2 small">
+                        <strong>Ferramenta não oficial – apenas para fins informativos.</strong><br>
+                        Este simulador não possui qualquer vínculo com instituições públicas ou privadas.<br>
+                        Desenvolvido com auxilio de IA por J.L.P.S.Menezes
+                    </p>
+                    <p class="mb-0 small">
+                        <a href="https://in.gov.br/en/web/dou/-/lei-n-15.367-de-30-de-marco-de-2026-696676817"
+                            target="_blank" class="text-white-50">
+                            <i class="fa-regular fa-file-lines me-1"></i> Consultar a Lei nº 15.367/2026
+                        </a>
+                    </p>
                 </div>
             </div>
             <hr class="footer-divider">
             <div class="row">
-                <div class="col-md-8 text-center text-md-start small">
-                    <p class="mb-0">© 2026 Instituto Federal de Pernambuco - Campus Olinda.</p>
-                </div>
-                <div class="col-md-4 text-center text-md-end small">
-                    <p class="mb-0">Desenvolvido pela CTIC | Versão 1.0</p>
+                <div class="col-md-12 text-center small">
+                    <p class="mb-0">Desenvolvido de forma independente – sem vínculo com quaisquer órgãos oficiais.</p>
                 </div>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <script>
         const anexos = [
             {
@@ -527,16 +734,16 @@
         ];
 
         const container = document.getElementById('containerCriterios');
-        
+
         anexos.forEach((anexo) => {
             let tbodyHTML = '';
             anexo.itens.forEach((item, j) => {
                 const inputId = `req${anexo.id}_item${j}`;
                 const obsHTML = item.obs ? `<span class="obs-text"><i class="fa-solid fa-circle-exclamation"></i> ${item.obs}</span>` : '';
-                
+
                 tbodyHTML += `
                     <tr class="criterio-row">
-                        <td class="text-center align-middle text-muted fw-bold">${j+1}</td>
+                        <td class="text-center align-middle text-muted fw-bold">${j + 1}</td>
                         <td class="align-middle criterio-desc" style="min-width: 300px;">
                             ${item.desc}
                             ${obsHTML}
@@ -584,7 +791,6 @@
             container.innerHTML += sectionHTML;
         });
 
-        // ----- FUNÇÕES DE PERSISTÊNCIA (localStorage) -----
         const STORAGE_KEY = 'rsc_simulator_quantities';
 
         function salvarQuantidadesNoLocalStorage() {
@@ -598,14 +804,13 @@
         function carregarQuantidadesDoLocalStorage() {
             const dadosSalvos = localStorage.getItem(STORAGE_KEY);
             if (!dadosSalvos) return;
-            
+
             try {
                 const dados = JSON.parse(dadosSalvos);
                 for (const [id, valor] of Object.entries(dados)) {
                     const input = document.getElementById(id);
                     if (input) {
                         input.value = valor;
-                        // Atualiza o subtotal na tela (necessário para exibição correta)
                         const qtd = parseInt(valor) || 0;
                         const pts = parseFloat(input.getAttribute('data-pts'));
                         const subtotal = qtd * pts;
@@ -624,11 +829,11 @@
                 calcularRSC();
                 salvarQuantidadesNoLocalStorage();
             });
-            input.addEventListener('focus', function() { this.select(); }); 
+            input.addEventListener('focus', function () { this.select(); });
         });
 
         document.querySelectorAll('.btn-minus').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 const targetId = this.getAttribute('data-target');
                 const input = document.getElementById(targetId);
                 let val = parseInt(input.value) || 0;
@@ -641,7 +846,7 @@
         });
 
         document.querySelectorAll('.btn-plus').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 const targetId = this.getAttribute('data-target');
                 const input = document.getElementById(targetId);
                 let val = parseInt(input.value) || 0;
@@ -655,7 +860,7 @@
         const msgSemResultados = document.getElementById('msgSemResultados');
         const clearBusca = document.getElementById('clearBusca');
 
-        inputBusca.addEventListener('input', function() {
+        inputBusca.addEventListener('input', function () {
             const termo = this.value.toLowerCase().trim();
             const cards = document.querySelectorAll('.anexo-card');
             let temQualquerResultado = false;
@@ -672,7 +877,7 @@
 
                 linhas.forEach(linha => {
                     const textoDescricao = linha.querySelector('.criterio-desc').textContent.toLowerCase();
-                    
+
                     if (textoDescricao.includes(termo)) {
                         linha.style.display = '';
                         cardTemVisivel = true;
@@ -688,28 +893,24 @@
             msgSemResultados.classList.toggle('d-none', temQualquerResultado || cards.length === 0);
         });
 
-        clearBusca.addEventListener('click', function() {
+        clearBusca.addEventListener('click', function () {
             inputBusca.value = '';
-            inputBusca.dispatchEvent(new Event('input')); 
+            inputBusca.dispatchEvent(new Event('input'));
             inputBusca.focus();
         });
 
-        document.getElementById('btnConfirmarLimpar').addEventListener('click', function() {
-            // Zerar todos os inputs
+        document.getElementById('btnConfirmarLimpar').addEventListener('click', function () {
             document.querySelectorAll('.input-qty').forEach(input => {
                 input.value = 0;
                 document.getElementById(`total_${input.id}`).innerText = "0.0";
             });
-            
-            // Recalcular e salvar (salvar irá zerar o localStorage também)
+
             calcularRSC();
             salvarQuantidadesNoLocalStorage();
-            
-            // Limpar a busca visual
+
             inputBusca.value = '';
-            inputBusca.dispatchEvent(new Event('input')); 
-            
-            // Fechar o modal
+            inputBusca.dispatchEvent(new Event('input'));
+
             const modalEl = document.getElementById('modalLimparDados');
             const modalInstance = bootstrap.Modal.getInstance(modalEl);
             modalInstance.hide();
@@ -722,16 +923,16 @@
 
             document.querySelectorAll('.input-qty').forEach(input => {
                 let qtd = parseInt(input.value) || 0;
-                if(qtd < 0) { qtd = 0; input.value = 0; } 
-                
+                if (qtd < 0) { qtd = 0; input.value = 0; }
+
                 let pts = parseFloat(input.getAttribute('data-pts'));
                 let req = parseInt(input.getAttribute('data-req'));
-                
+
                 let subtotal = qtd * pts;
                 document.getElementById(`total_${input.id}`).innerText = subtotal.toFixed(1);
-                
+
                 totalGeral += subtotal;
-                
+
                 if (qtd > 0) {
                     criteriosDistintos++;
                     reqCounts[req]++;
@@ -742,8 +943,8 @@
             document.getElementById('totalCriterios').innerText = criteriosDistintos;
 
             const hasReq_II_IV_V_VI = (reqCounts[2] > 0 || reqCounts[4] > 0 || reqCounts[5] > 0 || reqCounts[6] > 0);
-            const hasReq_IV_V_VI    = (reqCounts[4] > 0 || reqCounts[5] > 0 || reqCounts[6] > 0);
-            const hasReq_VI         = (reqCounts[6] > 0);
+            const hasReq_IV_V_VI = (reqCounts[4] > 0 || reqCounts[5] > 0 || reqCounts[6] > 0);
+            const hasReq_VI = (reqCounts[6] > 0);
 
             const niveisProgresso = [
                 { id: 1, pts: 10, ativ: 1, req: null },
@@ -763,19 +964,19 @@
                 document.getElementById(`prog_pts_${nivel.id}`).innerHTML = `<span class="${ptsOK ? 'text-ifpe-green fw-bold' : 'text-muted'}">${totalGeral.toFixed(1)}</span> / ${nivel.pts}`;
 
                 document.getElementById(`prog_ativ_${nivel.id}`).innerHTML = `<span class="${ativOK ? 'text-ifpe-green fw-bold' : 'text-muted'}">${criteriosDistintos}</span> / ${nivel.ativ}`;
-                
-                if(nivel.req !== null) {
+
+                if (nivel.req !== null) {
                     document.getElementById(`prog_area_${nivel.id}`).innerHTML = areaOK ? '<i class="fa-solid fa-check text-ifpe-green"></i>' : '<i class="fa-solid fa-xmark text-danger opacity-50"></i>';
                 }
-                
+
                 document.getElementById(`prog_status_${nivel.id}`).innerHTML = atingido ? '<i class="fa-solid fa-circle-check text-ifpe-green fs-6"></i>' : '<i class="fa-solid fa-lock text-muted opacity-25 fs-6"></i>';
-                
+
                 document.getElementById(`prog_row_${nivel.id}`).className = atingido ? 'bg-achieved' : '';
             });
 
             let nivel = "Não Atingiu Mínimo";
             let iqText = "";
-            let color = "var(--verde-if)"; 
+            let color = "var(--verde-if)";
 
             if (totalGeral >= 75 && criteriosDistintos >= 7 && hasReq_VI) {
                 nivel = "RSC VI"; iqText = "Equivalente ao IQ 75% (Doutorado)";
@@ -784,25 +985,25 @@
             } else if (totalGeral >= 30 && criteriosDistintos >= 3 && hasReq_II_IV_V_VI) {
                 nivel = "RSC IV"; iqText = "Equivalente ao IQ 30% (Especialização)";
             } else if (totalGeral >= 25 && criteriosDistintos >= 2) {
-                nivel = "RSC III"; iqText = "Equivalente ao IQ 25% (Graduação)"; 
+                nivel = "RSC III"; iqText = "Equivalente ao IQ 25% (Graduação)";
             } else if (totalGeral >= 20 && criteriosDistintos >= 2) {
-                nivel = "RSC II"; iqText = "Equivalente ao IQ 20% (Curso Técnico)"; 
+                nivel = "RSC II"; iqText = "Equivalente ao IQ 20% (Curso Técnico)";
             } else if (totalGeral >= 10 && criteriosDistintos >= 1) {
-                nivel = "RSC I"; iqText = "Equivalente ao IQ 10% (Ens. Fundamental)"; 
+                nivel = "RSC I"; iqText = "Equivalente ao IQ 10% (Ens. Fundamental)";
             }
 
             const nivelEl = document.getElementById('nivelProjetado');
             const iqEl = document.getElementById('iqEquivalente');
-            
+
             nivelEl.innerText = nivel;
             nivelEl.style.color = color;
             iqEl.innerText = iqText;
             iqEl.style.display = iqText ? 'block' : 'none';
         }
-        
-        // Carregar dados salvos antes de calcular pela primeira vez
+
         carregarQuantidadesDoLocalStorage();
         calcularRSC();
     </script>
 </body>
+
 </html>
