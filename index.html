@@ -316,7 +316,7 @@
                 <h5 class="alert-heading fw-bold mb-2"><i class="fa-solid fa-circle-exclamation"></i> Aviso Importante
                 </h5>
                 <ul class="mb-0 small">
-                    Esta calculadora reflete <strong>estritamente</strong> as pontuações e regras da <strong>Minuta de
+                    Esta calculadora reflete as pontuações e regras da <strong>Minuta de
                         Decreto</strong> formulada e revisada pelo Ministério da Educação (MEC). Baseado na
                     regulamentação da Lei nº 15.367/2026.<br><br>
 
@@ -327,8 +327,8 @@
                             <div>
                                 <span class="d-block fw-bold text-dark" style="font-size: 0.95rem;">Documento Base do
                                     Simulador</span>
-                                <span class="text-dark opacity-75" style="font-size: 0.85rem;">Clique para ver a
-                                    proposta que embasou estes cálculos.</span>
+                                <span class="text-dark opacity-75" style="font-size: 0.85rem;">Clique para ver o
+                                    documento que embasou estes cálculos.</span>
                             </div>
                         </div>
                         <a href="https://drive.google.com/file/d/137_EwNWMTXIMB7d6sCAZRF9iU0ecn6XG/view?usp=sharing"
@@ -664,7 +664,7 @@
                     { desc: "Participação em atividades de produção/reformulação de material acessível, técnico de referência (manuais, roteiros técnicos).", unidade: "Por produto", pts: 3, obs: "" },
                     { desc: "Participação em atividade de avaliação de trabalho ou atuação como jurado em eventos acadêmicos, científicos, culturais, esportivos e técnicos.", unidade: "Por evento", pts: 3, obs: "" },
                     { desc: "Participação em atividade institucional de produção audiovisual, artística, exposição, podcast ou outras formas de apresentação.", unidade: "Por projeto", pts: 3, obs: "" },
-                    { desc: "Participação em programas de formação continuada ou ações de desenvolvimento de competências, desde que não utilizada para fins de aceleração da promoção na carreira, com carga horária mínima de 10 horas.", unidade: "Por capacitação", pts: 3, obs: "Não pode ter sido usado para aceleração da promoção." },
+                    { desc: "Participação em programas de formação continuada ou ações de desenvolvimento de competências, desde que não utilizada para fins de aceleração da promoção na carreira, com carga horária mínima de 10 horas.", unidade: "Por capacitação", pts: 3, obsLabel: "Não pode ter sido usado para aceleração da promoção.", obsTooltip: "<b>O que significa:</b> Cursos de capacitação já apresentados para obter Progressão por Capacitação Profissional (mudança de padrão/nível na carreira) não podem ser reaproveitados aqui, conforme o princípio da vedação à duplicidade.<br><br><b>Exemplo Prático:</b> Se você fez um curso de 60h e usou o certificado para progredir do padrão D-1 para o D-2, ele está 'gasto' e não pontua no RSC. Mas se você fez outro curso de 40h que ainda não foi usado para progressão funcional, pode usá-lo nesse item aqui!" },
                     { desc: "Desempenho de atividade técnica de natureza especializada, com contribuição institucional relevante na área de atuação.", unidade: "Ano ou fração > 6 meses", pts: 1, obs: "" },
                     { desc: "Participação em congresso, simpósio, fórum, conferência, colóquio, mesa-redonda, workshop, seminário, mostra/feira, treinamento, atividades de apoio técnico, ações de campo, saídas pedagógicas, eventos científicos/esportivos/artísticos/culturais/sindicais (carga horária mínima de 4h).", unidade: "Por evento", pts: 1, obs: "" }
                 ]
@@ -713,7 +713,7 @@
                     { desc: "Carta Patente.", unidade: "Por patente", pts: 30, obs: "" },
                     { desc: "Participação no desenvolvimento de protótipos, depósitos ou registros de propriedade intelectual ou privilégio de invenção.", unidade: "Por projeto", pts: 25, obs: "" },
                     { desc: "Participação em transferência de tecnologia, licenciamento ou exploração de ativo tecnológico, como autor ou inventor.", unidade: "Por produto", pts: 20, obs: "" },
-                    { desc: "Conclusão de curso de educação formal superior ao exigido para o ingresso no cargo de que é titular e que não seja utilizado para percepção do atual nível de Incentivo a Qualificação - IQ.", unidade: "Por curso", pts: 15, obs: "Não pode estar sendo utilizado para o atual nível de IQ." },
+                    { desc: "Conclusão de curso de educação formal superior ao exigido para o ingresso no cargo de que é titular e que não seja utilizado para percepção do atual nível de Incentivo a Qualificação - IQ.", unidade: "Por curso", pts: 15, obsLabel: "Não pode estar sendo utilizado para o atual nível de IQ.", obsTooltip: "<b>O que significa:</b> O diploma formal (Graduação, Especialização, Mestrado, etc.) que já garante a porcentagem do seu Incentivo à Qualificação (IQ) atual no contracheque não pode ser pontuado novamente no RSC.<br><br><b>Exemplo Prático:</b> Se você ganha IQ de 52% por ter concluído um Mestrado, esse mesmo diploma não vale pontos aqui. Porém, se você tem uma Especialização anterior que 'sobrou' e não está mais atrelada ao seu IQ atual, ela pode ser contada para render os 15 pontos no RSC!" },
                     { desc: "Participação na implantação ou desenvolvimento de produto, projeto, processo, técnica ou tecnologia de interesse institucional.", unidade: "Por produto", pts: 15, obs: "" },
                     { desc: "Certificação profissional por órgão ou entidade competente demonstrando domínio de conhecimento técnico na área de atuação.", unidade: "Por certificado", pts: 15, obs: "" },
                     { desc: "Atuação em atividade de liderança ou vice-liderança de grupo de pesquisa ou extensão registrada.", unidade: "Por grupo de pesquisa", pts: 7.5, obs: "" },
@@ -741,9 +741,12 @@
             anexo.itens.forEach((item, j) => {
                 const inputId = `req${anexo.id}_item${j}`;
                 let obsHTML = '';
-                if (item.obs) {
+
+                if (item.obsTooltip && item.obsLabel) {
+                    obsHTML = `<span class="obs-text" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="${item.obsTooltip.replace(/"/g, '&quot;')}"><i class="fa-solid fa-circle-exclamation"></i> ${item.obsLabel}</span>`;
+                } else if (item.obs) {
                     let tooltipText = item.obs;
-                    obsHTML = `<span class="obs-text" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="${tooltipText.replace(/"/g, '&quot;')}"><i class="fa-solid fa-circle-exclamation"></i> ${item.obs}</span>`;
+                    obsHTML = `<span class="obs-text" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="${tooltipText.replace(/"/g, '&quot;')}"><i class="fa-solid fa-circle-exclamation"></i> Mais Informações</span>`;
                 }
 
                 tbodyHTML += `
