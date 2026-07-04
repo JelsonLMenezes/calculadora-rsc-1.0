@@ -367,37 +367,37 @@
                             </thead>
                             <tbody class="small text-muted">
                                 <tr>
-                                    <td class="text-start ps-4 fw-bold text-dark">RSC I <span class="iq-badge bg-white">IQ 10% / Ens. Fundamental</span></td>
+                                    <td class="text-start ps-4 fw-bold text-dark">RSC I <span class="iq-badge bg-white">IQ 10% / < Incompleto Ens. Fund.</span></td>
                                     <td>10 pontos</td>
                                     <td>1 atividade mínima</td>
                                     <td class="text-start">Livre (Qualquer Requisito).</td>
                                 </tr>
                                 <tr>
-                                    <td class="text-start ps-4 fw-bold text-dark">RSC II <span class="iq-badge bg-white">IQ 15% / Ensino Médio</span></td>
+                                    <td class="text-start ps-4 fw-bold text-dark">RSC II <span class="iq-badge bg-white">IQ 15% / Ens. Fundamental</span></td>
                                     <td>15 pontos</td>
                                     <td>2 atividades mínimas</td>
                                     <td class="text-start">Livre (Qualquer Requisito).</td>
                                 </tr>
                                 <tr>
-                                    <td class="text-start ps-4 fw-bold text-dark">RSC III <span class="iq-badge bg-white">IQ 25% / Graduação</span></td>
+                                    <td class="text-start ps-4 fw-bold text-dark">RSC III <span class="iq-badge bg-white">IQ 25% / Ensino Médio</span></td>
                                     <td>25 pontos</td>
                                     <td>2 atividades mínimas</td>
                                     <td class="text-start">Livre (Qualquer Requisito).</td>
                                 </tr>
                                 <tr>
-                                    <td class="text-start ps-4 fw-bold text-dark">RSC IV <span class="iq-badge">IQ 30% / Especialização</span></td>
+                                    <td class="text-start ps-4 fw-bold text-dark">RSC IV <span class="iq-badge">IQ 30% / Graduação</span></td>
                                     <td>30 pontos</td>
                                     <td>3 atividades mínimas</td>
                                     <td class="text-start text-dark fw-semibold">Pelo menos 1 ativ. nos Requisitos II, IV, V ou VI.</td>
                                 </tr>
                                 <tr>
-                                    <td class="text-start ps-4 fw-bold text-dark">RSC V <span class="iq-badge">IQ 52% / Mestrado</span></td>
+                                    <td class="text-start ps-4 fw-bold text-dark">RSC V <span class="iq-badge">IQ 52% / Especialização</span></td>
                                     <td>52 pontos</td>
                                     <td>5 atividades mínimas</td>
                                     <td class="text-start text-dark fw-semibold">Pelo menos 1 ativ. nos Requisitos IV, V ou VI.</td>
                                 </tr>
                                 <tr>
-                                    <td class="text-start ps-4 fw-bold text-dark">RSC VI <span class="iq-badge">IQ 75% / Doutorado</span></td>
+                                    <td class="text-start ps-4 fw-bold text-dark">RSC VI <span class="iq-badge">IQ 75% / Mestrado</span></td>
                                     <td>75 pontos</td>
                                     <td>7 atividades mínimas</td>
                                     <td class="text-start text-dark fw-semibold">Pelo menos 1 ativ. no Requisito VI.</td>
@@ -629,7 +629,7 @@
                     { desc: "Elaboração de projeto básico ou de termo de referência, ou participação como membro da equipe de planejamento da contratação.", unidade: "Por designação", pts: 3, obs: "" },
                     { desc: "Exercício de atividades de gestão ou fiscalização de contratos de aquisição, serviços, convênios e acordos ou instrumentos correlatos.", unidade: "Por designação", pts: 4.5, obs: "" },
                     { desc: "Exercício de atividades relacionadas a licitação e a respectivas excepcionalidades.", unidade: "Ano ou fração > 6 meses", pts: 3, obs: "" },
-                    { desc: "Participação em atividades de apoio técnico especializado em políticas, programas e ações de promoção na área de saúde humana, animal e ambiente, de acessibilidade ou diversidade.", unidade: "Ano ou fração > 6 meses", pts: 3, obs: "" },
+                    { desc: "Participação em atividades de apoio técnico especializado em políticas, programas e ações de promoção na área de saúde humana, animal e ambiente, de acessibilidade ou diversidade, de interesse institucional.", unidade: "Ano ou fração > 6 meses", pts: 3, obs: "" },
                     { desc: "Atuação tecnicamente qualificada em ambientes ou processos que demandem condições especiais de segurança, cuidado ou conformidade com requisitos legais e regulatórios, desde que não receba adicional de periculosidade ou insalubridade em razão das mesmas condições.", unidade: "Ano ou fração > 6 meses", pts: 3, obs: "" },
                     { desc: "Atuação em sistemas e/ou processos de trabalho institucionais em ensino, pesquisa, extensão, gestão e inovação, desde que não constitua atividade habitual do cargo.", unidade: "Por designação", pts: 3, obs: "" },
                     { desc: "Atuação como responsável por setor ou por unidade, formalmente designado, desde que a designação não gere pagamento de remuneração.", unidade: "Ano ou fração > 6 meses", pts: 4.5, obs: "" }
@@ -932,17 +932,17 @@
             let color = "var(--verde-if)";
 
             if (totalGeral >= 75 && criteriosDistintos >= 7 && has_ReqVI) {
-                nivel = "RSC VI"; iqText = "Equivalente ao IQ 75% (Doutorado)";
+                nivel = "RSC VI"; iqText = "Equivalente ao IQ 75% (Mestrado)";
             } else if (totalGeral >= 52 && criteriosDistintos >= 5 && has_ReqIV_to_VI) {
-                nivel = "RSC V"; iqText = "Equivalente ao IQ 52% (Mestrado)";
+                nivel = "RSC V"; iqText = "Equivalente ao IQ 52% (Especialização)";
             } else if (totalGeral >= 30 && criteriosDistintos >= 3 && has_ReqII_to_VI) {
-                nivel = "RSC IV"; iqText = "Equivalente ao IQ 30% (Especialização)";
+                nivel = "RSC IV"; iqText = "Equivalente ao IQ 30% (Graduação)";
             } else if (totalGeral >= 25 && criteriosDistintos >= 2) {
-                nivel = "RSC III"; iqText = "Equivalente ao IQ 25% (Graduação)";
+                nivel = "RSC III"; iqText = "Equivalente ao IQ 25% (Ensino Médio)";
             } else if (totalGeral >= 15 && criteriosDistintos >= 2) {
-                nivel = "RSC II"; iqText = "Equivalente ao IQ 15% (Ensino Médio)";
+                nivel = "RSC II"; iqText = "Equivalente ao IQ 15% (Ens. Fundamental)";
             } else if (totalGeral >= 10 && criteriosDistintos >= 1) {
-                nivel = "RSC I"; iqText = "Equivalente ao IQ 10% (Ens. Fundamental)";
+                nivel = "RSC I"; iqText = "Equivalente ao IQ 10% (Ens. Fundamental Incompleto)";
             }
 
             if (nivel === "Não Atingiu Mínimo" && totalGeral >= 30 && criteriosDistintos >= 3) {
